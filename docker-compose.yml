@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0-jammy
+    container_name: faq-mongodb
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - faq-network
+
+  backend:
+    build: ./backend
+    container_name: faq-backend
+    ports:
+      - '5000:5000'
+    environment:
+      - PORT=5000
+      - MONGO_URI=mongodb://mongodb:27017/faq-assistant
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    depends_on:
+      - mongodb
+    networks:
+      - faq-network
+
+  frontend:
+    build: ./frontend
+    container_name: faq-frontend
+    ports:
+      - '3000:80'
+    depends_on:
+      - backend
+    networks:
+      - faq-network
+
+networks:
+  faq-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
