@@ -4,8 +4,10 @@
   "type": "module",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "node --watch backend/src/server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm install --prefix backend && npm install --prefix frontend --include=dev && npm run build --prefix frontend",
+    "dev": "nodemon backend/src/server.js",
+    "start": "node backend/src/server.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
