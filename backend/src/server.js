@@ -1,8 +1,8 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import { connectDB } from './config/db.js';
-import chatRoutes from './routes/chatRoutes.js';
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import { connectDB } from "./config/db.js";
+import chatRoutes from "./routes/chatRoutes.js";
 
 dotenv.config();
 
@@ -17,7 +17,18 @@ app.use(express.json());
 connectDB();
 
 // API Routes
-app.use('/api', chatRoutes);
+app.use("/api", chatRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  // const __filename = fileURLToPath(import.meta.url);
+  // const __dirname = path.dirname(__filename);
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  app.get(/.*/, (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../frontend", "dist", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => res.send("API is running..."));
+}
 
 // Start Server
 app.listen(PORT, () => {
