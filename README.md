@@ -8,17 +8,10 @@ This project was built as part of the Technical Assessment for the AI Engineer D
 
 ## How to Use
 
-> For the best experience, start the backend first. After the backend has loaded, open the frontend.
+> For the best experience, start the backend first. After the backend has loaded, open the frontend. Because the backend is hosted on Render, which may take a few moments to wake up if it has been inactive. Opening the backend first helps ensure the chatbot works smoothly when you launch the frontend.
 
-## Why this order matters
-
-The backend is hosted on Render, which may take a few moments to wake up if it has been inactive. Opening the backend first helps ensure the chatbot works smoothly when you launch the frontend.
-
-- **Step 1: Start the backend**
-Click and open the backend service first: [Open Backend](https://faq-ai-assistant.onrender.com/)
-
-- **Step 2: Open the frontend**
-Once the backend is running, open the frontend application: [Open Frontend](https://faq-ai-assistant.vercel.app/)
+- **Step 1:** Click and open the backend service first: [Open Backend](https://faq-ai-assistant.onrender.com/)
+- **Step 2:** Once the backend is running, open the frontend application: [Open Frontend](https://faq-ai-assistant.vercel.app/)
 
 ---
 
